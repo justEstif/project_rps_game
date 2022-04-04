@@ -1,19 +1,19 @@
-const buttons = document.querySelectorAll('.choice');
-const begin = document.querySelector('.game');
+const buttons = document.querySelectorAll(".choice");
+const begin = document.querySelector(".game");
 
 const gameChoices = [
-  { choice: 'Rock', loss: 'Paper', win: 'Scissors' },
-  { choice: 'Paper', loss: 'Scissors', win: 'Rock' },
-  { choice: 'Scissors', loss: 'Rock', win: 'Paper' },
+  { choice: "Rock", loss: "Paper", win: "Scissors" },
+  { choice: "Paper", loss: "Scissors", win: "Rock" },
+  { choice: "Scissors", loss: "Rock", win: "Paper" },
 ];
 // returns a gameChoice object based on user button
 function userPlay(value) {
   switch (value) {
-    case 'Rock':
+    case "rock":
       return gameChoices[0];
-    case 'Paper':
+    case "paper":
       return gameChoices[1];
-    case 'Scissors':
+    case "scissors":
       return gameChoices[2];
   }
 }
@@ -26,27 +26,27 @@ function computerPlay() {
 // returns a round element which has a statement and point
 function playRound(computerSelection, playerSelection) {
   const round = {
-    statement: '',
+    statement: "",
     point: 0,
   };
   switch (playerSelection.choice) {
     case computerSelection.choice:
       round[
-        'statement'
+        "statement"
       ] = `You draw. Both players chose ${playerSelection.choice}`;
-      round['point'] = 0;
+      round["point"] = 0;
       break;
     case computerSelection.loss:
       round[
-        'statement'
+        "statement"
       ] = `You win. ${playerSelection.choice} beats ${computerSelection.choice}.`;
-      round['point'] = 1;
+      round["point"] = 1;
       break;
     case computerSelection.win:
       round[
-        'statement'
+        "statement"
       ] = `You loss. ${computerSelection.choice} beats ${playerSelection.choice}.`;
-      round['point'] = 0;
+      round["point"] = 0;
 
       break;
   }
@@ -56,12 +56,12 @@ function playRound(computerSelection, playerSelection) {
 // roundObject, playerScore, numberOfRounds
 let gameArray = [{}, 0, 0];
 function game() {
-  console.log('Click a button');
+  console.log("Click a button");
   buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      gameArray[0] = playRound(computerPlay(), userPlay(button.innerText));
-      gameArray[1] += gameArray[0]['point'];
-      console.log(gameArray[0]['statement']);
+    button.addEventListener("click", () => {
+      gameArray[0] = playRound(computerPlay(), userPlay(button.id));
+      gameArray[1] += gameArray[0]["point"];
+      console.log(gameArray[0]["statement"]);
       console.log(`${gameArray[1]}`);
       gameArray[2]++;
       if (gameArray[2] >= 5) {
@@ -72,7 +72,9 @@ function game() {
     });
   });
 }
-begin.addEventListener('click', game);
+begin.addEventListener("click", game);
 
 // bugs: the game is called multiple time
 // soln: create stop button which exits the game
+
+// helper function to get an element's exact position
