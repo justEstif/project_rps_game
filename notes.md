@@ -17,3 +17,6 @@ Current problem:
   - we could add a helper function to deal with the scores
 - might have to change some of the return values or create more helper
   functions
+
+I have decided to use this project as practice for class and modular design in
+JS.
